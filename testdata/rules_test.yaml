@@ -1,0 +1,26 @@
+domain_groups:
+  - name: youtube
+    domains:
+      - .youtube.com
+      - .googlevideo.com
+      - .ytimg.com
+  - name: social
+    domains:
+      - .tiktok.com
+      - .instagram.com
+
+rules:
+  - device: 192.168.1.100
+    label: kids-tablet
+    limits:
+      - group: youtube
+        daily_minutes: 60
+      - group: social
+        daily_minutes: 30
+  - device: 192.168.1.101
+    label: kids-pc
+    limits:
+      - group: youtube
+        daily_minutes: 120
+
+check_interval_seconds: 60

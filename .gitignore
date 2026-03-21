@@ -1,0 +1,27 @@
+# Go
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test
+*.test
+*.out
+coverage.txt
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Data
+/.data/
+/rules.yaml
+
+# OS
+.DS_Store
+Thumbs.db

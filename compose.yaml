@@ -1,0 +1,18 @@
+services:
+  squid:
+    image: squid-brocker
+    container_name: squid-brocker
+    build: .
+    ports:
+      - "3128:3128"
+    volumes:
+      - ./rules.yaml:/etc/squid-brocker/rules.yaml:ro
+      - ./.data/squid-brocker:/var/lib/squid-brocker
+    restart: unless-stopped
+    tty: true
+    init: true
+    healthcheck:
+      test: ["CMD", "squid", "-k", "check", "-f", "/etc/squid/squid.conf"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
