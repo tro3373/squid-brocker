@@ -105,7 +105,10 @@ func (f *FileStore) Save(s State) error {
 	if err != nil {
 		return fmt.Errorf("marshaling state: %w", err)
 	}
-	return os.WriteFile(f.path, data, 0600)
+	if err := os.WriteFile(f.path, data, 0644); err != nil {
+		return fmt.Errorf("writing state file: %w", err)
+	}
+	return os.Chmod(f.path, 0644)
 }
 
 type stateEntry struct {
